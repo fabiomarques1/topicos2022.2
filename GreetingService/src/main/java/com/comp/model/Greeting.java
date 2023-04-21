@@ -1,4 +1,4 @@
-package com.comp;
+package com.comp.model;
 
 public class Greeting {
 	private final long id;
