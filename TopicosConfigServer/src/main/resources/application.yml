@@ -1,0 +1,16 @@
+server:
+    port: 8888
+spring:
+    application:
+         name: topicos-config-server
+    cloud:
+       config:
+          server:
+             git:
+               uri: https://github.com/fabiomarques1/topicos-config-server
+               default-label: main
+               search-paths:
+               - 'greeting-service*'
+
+
+

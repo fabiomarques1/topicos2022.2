@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=C\:\\code\\topicos2022.2\\.git;
-GitRepositoriesView.GitDirectories.relative=.git;
+GitRepositoriesView.GitDirectories=C\:\\code\\topicos2022.2\\.git;C\:\\code\\02-config-server\\.git;C\:\\code\\topicos-config-server\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;C\:\\code\\02-config-server\\.git;C\:\\code\\topicos-config-server\\.git;
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
