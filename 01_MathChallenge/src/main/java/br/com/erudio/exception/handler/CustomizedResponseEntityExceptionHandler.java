@@ -19,7 +19,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception ex, WebRequest request) {
-		ExceptionResponse exceptionResponse = 
+		ExceptionResponse exceptionResponse =  
 				new ExceptionResponse(
 						new Date(),
 						ex.getMessage(),
