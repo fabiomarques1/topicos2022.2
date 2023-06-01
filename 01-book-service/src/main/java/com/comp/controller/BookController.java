@@ -1,6 +1,6 @@
 package com.comp.controller;
 
-import java.util.Date;
+import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.comp.model.Book;
+import com.comp.proxy.CambioProxy;
 import com.comp.repository.BookRepository;
 
 @RestController
@@ -22,6 +23,9 @@ public class BookController {
 	@Autowired
 	private BookRepository repository;
 	
+	@Autowired
+	private CambioProxy proxy;
+	
 	//http://localhost:8100/book-service/1/BRL
 	@GetMapping(value="/{id}/{currency}")
 	public Book findBook(
@@ -32,8 +36,11 @@ public class BookController {
 		var book = repository.findById(id).get();
 		if (book==null) throw new RuntimeException("Book Not Found");
 		
+		var cambio = proxy.getCambio(new BigDecimal(book.getPrice()), "USD", currency);
+		
 		String port = environment.getProperty("local.server.port");
-		book.setEvironment(port);
+		book.setEvironment(port + "FEIGN");
+		book.setPrice(cambio.getConvertedValue().doubleValue());
 		
 		return book;
 	}
